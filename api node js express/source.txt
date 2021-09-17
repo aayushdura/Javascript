@@ -1,0 +1,44 @@
+const express = require("express");
+var bodyParser = require("body-parser");
+const app = express();
+const port = 8080;
+const registerdUsers = {
+  username: "aayush@yahoo.com",
+  password: "aayush123",
+};
+
+const generateToken = (username) => {
+  let token = Date.now() + username;
+  return token;
+};
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+app.get("/", (req, res) => {
+  //logic
+  res.send("Hello World!");
+});
+
+//login
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  if (
+    username == registerdUsers.username &&
+    password == registerdUsers.password
+  ) {
+    return res.json({
+      msg: "Login Success",
+      token: generateToken(username),
+    });
+  }
+  res.json({
+    msg: "Invalid username and password",
+  });
+});
+
+app.listen(port, () => {
+  console.log(Example app listening at http://localhost:${port});
+});
