@@ -1,5 +1,3 @@
-<script>
-
 // JavaScript program to remove duplicates
 // from unsorted linkedlist
 
@@ -41,7 +39,7 @@
 	given linked list */
 	function printList( head) {
 		while (head != null) {
-			document.write(head.val + " ");
+			console.log(head.val + " ");
 			head = head.next;
 		}
 	}
@@ -59,18 +57,14 @@
 		start.next.next.next.next.next = new node(11);
 		start.next.next.next.next.next.next = new node(10);
 
-		document.write(
-		"Linked list before removing duplicates :<br/>"
+		console.log(
+		"Linked list before removing duplicates :"
 		);
 		printList(start);
 
 		removeDuplicate(start);
 
-		document.write(
-		"<br/>Linked list after removing duplicates :<br/>"
+		console.log(
+		"Linked list after removing duplicates :"
 		);
 		printList(start);
-
-// This code is contributed by todaysgaurav
-
-</script>
